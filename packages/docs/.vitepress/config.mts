@@ -14,10 +14,11 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "Examples",
+        text: "Lf Element",
         items: [
           { text: "Markdown Examples", link: "/markdown-examples" },
           { text: "Runtime API Examples", link: "/api-examples" },
+          { text: "介绍", link: "/introduction" },
         ],
       },
     ],

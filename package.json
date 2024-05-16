@@ -7,7 +7,7 @@
     "dev": "pnpm --filter @lf-element/play dev",
     "docs:dev": "pnpm --filter @lf-element/docs dev",
     "docs:build": "pnpm --filter @lf-element/docs build",
-    "test": "echo 'todo'"
+    "test": "pnpm --filter @lf-element/components test"
   },
   "keywords": [],
   "author": "",

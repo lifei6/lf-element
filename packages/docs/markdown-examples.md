@@ -8,28 +8,26 @@ VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shi
 
 **Input**
 
-````md
-```js{4}
+```js
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+      msg: "Highlighted!",
+    };
+  },
+};
 ```
-````
 
 **Output**
 
-```js{4}
+```js
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+      msg: "Highlighted!",
+    };
+  },
+};
 ```
 
 ## Custom Containers
