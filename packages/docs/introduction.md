@@ -18,6 +18,9 @@
 
 - Vitest
   下一代测试框架
+- Vue Test Utils
+  Vue 官方提供的测试工具库
+  Vue Test Utils (VTU) 是一组实用函数，旨在简化 Vue.js 组件的测试。它提供了一些以隔离方式挂载 Vue 组件并与之交互的方法。
 
 ### 代码检查
 

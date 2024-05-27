@@ -1,0 +1,208 @@
+// 基础变量
+.lf-button {
+  --lf-button-font-weight: var(--lf-font-weight-primary);
+  --lf-button-border-color: var(--lf-border-color);
+  --lf-button-bg-color: var(--lf-fill-color-blank);
+  --lf-button-text-color: var(--lf-text-color-regular);
+  --lf-button-disabled-text-color: var(--lf-disabled-text-color);
+  --lf-button-disabled-bg-color: var(--lf-fill-color-blank);
+  --lf-button-disabled-border-color: var(--lf-border-color-light);
+  --lf-button-hover-text-color: var(--lf-color-primary);
+  --lf-button-hover-bg-color: var(--lf-color-primary-light-9);
+  --lf-button-hover-border-color: var(--lf-color-primary-light-7);
+  --lf-button-active-text-color: var(--lf-button-hover-text-color);
+  --lf-button-active-border-color: var(--lf-color-primary);
+  --lf-button-active-bg-color: var(--lf-button-hover-bg-color);
+  --lf-button-outline-color: var(--lf-color-primary-light-5);
+  --lf-button-active-color: var(--lf-text-color-primary);
+}
+// 基础样式（其中使用到了基础变量）
+.lf-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--lf-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: var(--lf-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  // -webkit-appearance: none;
+  background-color: var(--lf-button-bg-color);
+  border: var(--lf-border);
+  border-color: var(--lf-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--lf-font-size-base);
+  border-radius: var(--lf-border-radius-base);
+  & + & {
+    margin-left: 12px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--lf-button-hover-text-color);
+    border-color: var(--lf-button-hover-border-color);
+    background-color: var(--lf-button-hover-bg-color);
+    outline: none;
+  }
+  &:active {
+    color: var(--lf-button-active-text-color);
+    border-color: var(--lf-button-active-border-color);
+    background-color: var(--lf-button-active-bg-color);
+    outline: none;
+  }
+  /*plain*/
+  &.is-plain {
+    --lf-button-hover-text-color: var(--lf-color-primary);
+    --lf-button-hover-bg-color: var(--lf-fill-color-blank);
+    --lf-button-hover-border-color: var(--lf-color-primary);
+  }
+  /*round*/
+  &.is-round {
+    border-radius: var(--lf-border-radius-round);
+  }
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+  /*disabled*/
+  &.is-loading,
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--lf-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--lf-button-disabled-bg-color);
+    border-color: var(--lf-button-disabled-border-color);
+  }
+  [class*='er-icon'] {
+    width: 1em;
+    height: 1em;
+  }
+}
+// 不同类型的按钮进行基础变量的覆盖
+@color-list: primary, success, warning, info, danger;
+each(@color-list,.(@value){
+  .lf-button--@{value} {
+    --lf-button-text-color: var(--lf-color-white);
+    --lf-button-bg-color: ~"var(--lf-color-@{value})";
+    --lf-button-border-color: ~"var(--lf-color-@{value})";
+    --lf-button-outline-color: ~"var(--lf-color-@{value}-light-5)";
+    --lf-button-active-color: ~"var(--lf-color-@{value}-dark-2)";
+    --lf-button-hover-text-color: var(--lf-color-white);
+    --lf-button-hover-bg-color: ~"var(--lf-color-@{value}-light-3)";
+    --lf-button-hover-border-color: ~"var(--lf-color-@{value}-light-3)";
+    --lf-button-active-bg-color: ~"var(--lf-color-@{value}-dark-2)";
+    --lf-button-active-border-color: ~"var(--lf-color-@{value}-dark-2)";
+    --lf-button-disabled-text-color: var(--lf-color-white);
+    --lf-button-disabled-bg-color: ~"var(--lf-color-@{value}-light-5)";
+    --lf-button-disabled-border-color: ~"var(--lf-color-@{value}-light-5)";
+
+    &.is-plain {
+      --lf-button-text-color: ~"var(--lf-color-@{value})";
+      --lf-button-bg-color: ~"var(--lf-color-@{value}-light-9)";
+      --lf-button-border-color: ~"var(--lf-color-@{value}-light-5)";
+      --lf-button-hover-text-color: ~"var(--lf-color-white)";
+      --lf-button-hover-bg-color: ~"var(--lf-color-@{value})";
+      --lf-button-hover-border-color: ~"var(--lf-color-@{value})";
+      --lf-button-active-text-color: ~"var(--lf-color-white)";
+
+      --lf-button-disabled-text-color: ~"var(--lf-color-@{value}-light-5)";
+      --lf-button-disabled-bg-color: ~"var(--lf-color-@{value}-light-9)";
+      --lf-button-disabled-border-color: ~"var(--lf-color-@{value}-light-8)";
+    }
+
+  }
+});
+
+.lf-button--large {
+  --lf-button-size: 40px;
+  height: var(--lf-button-size);
+  padding: 12px 19px;
+  font-size: var(--lf-font-size-base);
+  border-radius: var(--lf-border-radius-base);
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+  }
+}
+.lf-button--small {
+  --lf-button-size: 24px;
+  height: var(--lf-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--lf-border-radius-base) - 1px);
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 5px;
+  }
+  [class*='er-icon'] {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+// 按钮组变量
+.lf-button-group {
+  --lf-button-group-border-color: var(--lf-border-color-lighter);
+}
+// 按钮组样式
+.lf-button-group {
+  display: inline-block;
+  vertical-align: middle;
+
+  &::after {
+    clear: both;
+  }
+  // 这个:deep会生效吗？
+  & > :deep(.lf-button) {
+    float: left;
+    position: relative;
+    margin-left: 0;
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right-color: var(--lf-button-group-border-color);
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-color: var(--lf-button-group-border-color);
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+
+      border-left-color: var(--lf-button-group-border-color);
+      border-right-color: var(--lf-button-group-border-color);
+    }
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+    &:first-child:last-child {
+      border-top-right-radius: var(--lf-border-radius-base);
+      border-bottom-right-radius: var(--lf-border-radius-base);
+      border-top-left-radius: var(--lf-border-radius-base);
+      border-bottom-left-radius: var(--lf-border-radius-base);
+
+      &.is-round {
+        border-radius: var(--lf-border-radius-round);
+      }
+
+      &.is-circle {
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+/* 定义css全局变量 */
+
+// 定义less变量和映射
+// 按钮类型和基础颜色映射colors
+#colors() {
+  primary: #409eff;
+  success: #67c23a;
+  warning: #e6a23c;
+  danger: #f56c6c;
+  info: #909399;
+}
+// 拼接变量名
+// .splice-var-name(@type,@value) {
+//   @{type}:;
+// }
+// 定义css变量
+:root {
+  /* colors */
+  --lf-color-white: #ffffff;
+  --lf-color-black: #000000;
+  --lf-bg-color: #ffffff;
+  --lf-bg-color-page: #f2f3f5;
+  --lf-bg-color-overlay: #ffffff;
+  --lf-text-color-primary: #303133;
+  --lf-text-color-regular: #606266;
+  --lf-text-color-secondary: #909399;
+  --lf-text-color-placeholder: #a8abb2;
+  --lf-text-color-disabled: #c0c4cc;
+  --lf-border-color: #dcdfe6;
+  --lf-border-color-light: #e4e7ed;
+  --lf-border-color-lighter: #ebeef5;
+  --lf-border-color-extra-light: #f2f6fc;
+  --lf-border-color-dark: #d4d7de;
+  --lf-border-color-darker: #cdd0d6;
+  --lf-fill-color: #f0f2f5;
+  --lf-fill-color-light: #f5f7fa;
+  --lf-fill-color-lighter: #fafafa;
+  --lf-fill-color-extra-light: #fafcff;
+  --lf-fill-color-dark: #ebedf0;
+  --lf-fill-color-darker: #e6e8eb;
+  --lf-fill-color-blank: #ffffff;
+
+  each(#colors(),#(@v,@k){
+    --lf-color-@{k}:@v;
+    --lf-color-@{k}-dark-2:mix(#000,@v,0.2*100%);
+    each(range(3,9),.(@value){
+      --lf-color-@{k}-light-@{value}:mix(#fff,@v,(@value /10)*100%);
+    })
+  });
+
+  /* border */
+  --lf-border-width: 1px;
+  --lf-border-style: solid;
+  --lf-border-color-hover: var(--lf-text-color-disabled);
+  --lf-border: var(--lf-border-width) var(--lf-border-style) var(--lf-border-color);
+  --lf-border-radius-base: 4px;
+  --lf-border-radius-small: 2px;
+  --lf-border-radius-round: 20px;
+  --lf-border-radius-circle: 100%;
+
+  /* font */
+  --lf-font-size-extra-large: 20px;
+  --lf-font-size-large: 18px;
+  --lf-font-size-medium: 16px;
+  --lf-font-size-base: 14px;
+  --lf-font-size-small: 13px;
+  --lf-font-size-extra-small: 12px;
+  --lf-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --lf-font-weight-primary: 500;
+
+  /*disabled*/
+  --lf-disabled-bg-color: var(--lf-fill-color-light);
+  --lf-disabled-text-color: var(--lf-text-color-placeholder);
+  --lf-disabled-border-color: var(--lf-border-color-light);
+
+  /*animation*/
+  --lf-transition-duration: 0.4s;
+  --lf-transition-duration-fast: 0.2s;
+}

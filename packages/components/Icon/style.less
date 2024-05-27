@@ -1,0 +1,17 @@
+@color-lists: primary, info, success, warning, danger;
+.lf-icon {
+  --lf-icon-color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  fill: currentColor;
+  color: var(--lf-icon-color);
+  font-size: inherit;
+}
+
+each(@color-lists,.(@value){
+  .lf-icon--@{value} {
+    --lf-icon-color: ~"var(--lf-color-@{value})";
+  }
+});

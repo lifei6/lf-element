@@ -26,11 +26,5 @@
     "allowJs": false,
     "checkJs": false
   },
-  "include": [
-    "packages/**/*.ts",
-    "packages/**/*.tsx",
-    "packages/**/*.vue",
-    "packages/components/env.d.ts"
-  ]
-  // 排除所有.js扩展文件的类型校验
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue", "env.d.ts"]
 }
