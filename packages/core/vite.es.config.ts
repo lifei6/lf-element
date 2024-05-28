@@ -3,27 +3,17 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // 生成类型声明文件的插件
 import dts from 'vite-plugin-dts'
+import { readdirSync } from 'fs'
+import { filter, map } from 'lodash-es'
 
 // 组件文件名（用于分包）
-const COMP_NAMES = [
-  'Alert',
-  'Button',
-  'Collapse',
-  'Dropdown',
-  'Form',
-  'Icon',
-  'Input',
-  'Loading',
-  'Message',
-  'MessageBox',
-  'Notification',
-  'Overlay',
-  'Popconfirm',
-  'Select',
-  'Switch',
-  'Tooltip',
-  'Upload'
-] as const
+function getDirectoriesSync(basePath: string) {
+  const entries = readdirSync(basePath, { withFileTypes: true })
+  return map(
+    filter(entries, (entry) => entry.isDirectory()),
+    (entry) => entry.name
+  )
+}
 
 export default defineConfig({
   plugins: [
@@ -82,7 +72,7 @@ export default defineConfig({
             return 'utils'
           }
           // 组件
-          for (const item of COMP_NAMES) {
+          for (const item of getDirectoriesSync('../components')) {
             if (id.includes(`/packages/components/${item}`)) {
               return item
             }

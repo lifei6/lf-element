@@ -16,6 +16,6 @@ library.add(fas)
 const install = makeInstaller(components)
 
 // 分别导出组件
-export * from '@lf-element/components'
+export * from '../components'
 // 导出安装函数
 export default install
