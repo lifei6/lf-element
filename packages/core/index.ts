@@ -1,6 +1,8 @@
 // lf-element插件的出口，app.use执行这里导出的install方法
 import { makeInstaller } from '@lf-element/utils'
 import components from './components'
+// 导入样式(为了打包)
+import '@lf-element/theme/index.less'
 // 导入字体图标库
 import { library } from '@fortawesome/fontawesome-svg-core'
 // 导入字体图标中的所有图标
