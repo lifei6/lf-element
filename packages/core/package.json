@@ -1,6 +1,6 @@
 {
   "name": "lf-element",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Components library by Vue3 + Ts",
   "type": "module",
   "files": [
@@ -9,21 +9,18 @@
   "sideEffects": [
     "./dist/index.css"
   ],
-  "main": "index.ts",
-  "publishConfig": {
-    "main": "./dist/umd/index.umd.cjs",
-    "module": "./dist/es/index.js",
-    "types": "./dist/types/core/index.d.ts",
-    "exports": {
-      ".": {
-        "import": "./dist/es/index.js",
-        "require": "./dist/umd/index.umd.cjs",
-        "types": "./dist/types/core/index.d.ts"
-      },
-      "./dist/": {
-        "import": "./dist/",
-        "require": "./dist/"
-      }
+  "main": "./dist/umd/index.umd.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/core/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/index.umd.cjs",
+      "types": "./dist/types/core/index.d.ts"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
   "scripts": {
