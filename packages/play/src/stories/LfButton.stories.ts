@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import { LfButton, LfButtonGroup, LfIcon } from 'lf-element'
-import '@lf-element/theme/index.less'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -55,7 +54,7 @@ const meta = {
 } satisfies Meta<typeof LfButton>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta> & { argTypes?: ArgTypes }
 
 // 渲染容器
 const container = (cpn: string) => {
@@ -69,7 +68,7 @@ const container = (cpn: string) => {
  * to learn how to use render functions.
  */
 // 主要按钮
-export const Primary: Story = {
+export const Primary: Story & { args: { content: string } } = {
   argTypes: {
     content: {
       control: { type: 'text' }
@@ -89,7 +88,7 @@ export const Primary: Story = {
 }
 
 // 成功按钮
-export const Success: Story = {
+export const Success: Story & { args: { content: string } } = {
   args: {
     content: '成功按钮',
     type: 'success'
@@ -104,7 +103,7 @@ export const Success: Story = {
 }
 
 // 图标按钮
-export const IconButton: Story = {
+export const IconButton: Story & { args: { content: string } } = {
   args: {
     icon: 'search',
     type: 'primary',
@@ -120,7 +119,7 @@ export const IconButton: Story = {
 }
 
 // 按钮组
-export const ButtonGroup: Story = {
+export const ButtonGroup: Story & { args: { content1: string; content2: string } } = {
   argTypes: {
     groupType: {
       control: { type: 'select' },

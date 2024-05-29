@@ -1,0 +1,64 @@
+// 折叠容器
+.lf-collapse {
+  --lf-collapse-border-color: var(--lf-border-color-light);
+  --lf-collapse-header-height: 48px;
+  --lf-collapse-header-bg-color: var(--lf-fill-color-blank);
+  --lf-collapse-header-text-color: var(--lf-text-color-primary);
+  --lf-collapse-header-font-size: 13px;
+  --lf-collapse-content-bg-color: var(--lf-fill-color-blank);
+  --lf-collapse-content-font-size: 13px;
+  --lf-collapse-content-text-color: var(--lf-text-color-primary);
+  --lf-collapse-disabled-text-color: var(--lf-disabled-text-color);
+  --lf-collapse-disabled-border-color: var(--lf-border-color-lighter);
+  border-top: 1px solid var(--lf-collapse-border-color);
+  border-bottom: 1px solid var(--lf-collapse-border-color);
+}
+
+// 折叠项--头
+.lf-collapse-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--lf-collapse-header-height);
+  line-height: var(--lf-collapse-header-height);
+  background-color: var(--lf-collapse-header-bg-color);
+  color: var(--lf-collapse-header-text-color);
+  cursor: pointer;
+  font-size: var(--lf-collapse-header-font-size);
+  font-weight: 500;
+  transition: border-bottom-color var(--lf-transition-duration);
+  outline: none;
+  border-bottom: 1px solid var(--lf-collapse-border-color);
+  &.is-disabled {
+    color: var(--lf-collapse-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+  }
+  &.is-active {
+    border-bottom-color: transparent;
+    .header-angle {
+      transform: rotate(90deg);
+    }
+  }
+  .header-angle {
+    transition: transform var(--lf-transition-duration);
+  }
+}
+
+// 折叠项--内容
+.lf-collapse-item__content {
+  will-change: height;
+  background-color: var(--lf-collapse-content-bg-color);
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: var(--lf-collapse-content-font-size);
+  color: var(--lf-collapse-content-text-color);
+  border-bottom: 1px solid var(--lf-collapse-border-color);
+  padding-bottom: 25px;
+}
+
+// 折叠内容的过渡动画
+.slide-enter-active,
+.slide-leave-active {
+  transition: height var(--lf-transition-duration) ease-in-out;
+}

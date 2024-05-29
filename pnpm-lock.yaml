@@ -138,6 +138,9 @@ importers:
       vite:
         specifier: 5.1.4
         version: 5.1.4(@types/node@20.11.20)(less@4.2.0)
+      vite-plugin-dts:
+        specifier: 3.9.1
+        version: 3.9.1(@types/node@20.11.20)(rollup@4.17.2)(typescript@5.2.2)(vite@5.1.4(@types/node@20.11.20)(less@4.2.0))
       vitest:
         specifier: 1.4.0
         version: 1.4.0(@types/node@20.11.20)(jsdom@24.0.0)(less@4.2.0)
@@ -167,7 +170,7 @@ importers:
         version: 6.5.2
       '@fortawesome/vue-fontawesome':
         specifier: ^3.0.6
-        version: 3.0.6(@fortawesome/fontawesome-svg-core@6.5.2)(vue@3.4.19(typescript@5.4.2))
+        version: 3.0.6(@fortawesome/fontawesome-svg-core@6.5.2)(vue@3.4.19(typescript@5.2.2))
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -176,11 +179,7 @@ importers:
         version: 4.2.5
       vue:
         specifier: 3.4.19
-        version: 3.4.19(typescript@5.4.2)
-    devDependencies:
-      vite-plugin-dts:
-        specifier: 3.9.1
-        version: 3.9.1(@types/node@20.11.20)(rollup@4.17.2)(typescript@5.4.2)(vite@5.1.4(@types/node@20.11.20)(less@4.2.0))
+        version: 3.4.19(typescript@5.2.2)
 
   packages/docs:
     devDependencies:
@@ -7498,11 +7497,6 @@ snapshots:
       '@fortawesome/fontawesome-svg-core': 6.5.2
       vue: 3.4.19(typescript@5.2.2)
 
-  '@fortawesome/vue-fontawesome@3.0.6(@fortawesome/fontawesome-svg-core@6.5.2)(vue@3.4.19(typescript@5.4.2))':
-    dependencies:
-      '@fortawesome/fontawesome-svg-core': 6.5.2
-      vue: 3.4.19(typescript@5.4.2)
-
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
@@ -9103,20 +9097,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.2.2
 
-  '@vue/language-core@1.8.27(typescript@5.4.2)':
-    dependencies:
-      '@volar/language-core': 1.11.1
-      '@volar/source-map': 1.11.1
-      '@vue/compiler-dom': 3.4.27
-      '@vue/shared': 3.4.27
-      computeds: 0.0.1
-      minimatch: 9.0.4
-      muggle-string: 0.3.1
-      path-browserify: 1.0.1
-      vue-template-compiler: 2.7.16
-    optionalDependencies:
-      typescript: 5.4.2
-
   '@vue/language-core@2.0.19(typescript@5.2.2)':
     dependencies:
       '@volar/language-core': 2.2.4
@@ -9149,12 +9129,6 @@ snapshots:
       '@vue/compiler-ssr': 3.4.19
       '@vue/shared': 3.4.19
       vue: 3.4.19(typescript@5.2.2)
-
-  '@vue/server-renderer@3.4.19(vue@3.4.19(typescript@5.4.2))':
-    dependencies:
-      '@vue/compiler-ssr': 3.4.19
-      '@vue/shared': 3.4.19
-      vue: 3.4.19(typescript@5.4.2)
 
   '@vue/shared@3.4.19': {}
 
@@ -13222,16 +13196,16 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-dts@3.9.1(@types/node@20.11.20)(rollup@4.17.2)(typescript@5.4.2)(vite@5.1.4(@types/node@20.11.20)(less@4.2.0)):
+  vite-plugin-dts@3.9.1(@types/node@20.11.20)(rollup@4.17.2)(typescript@5.2.2)(vite@5.1.4(@types/node@20.11.20)(less@4.2.0)):
     dependencies:
       '@microsoft/api-extractor': 7.43.0(@types/node@20.11.20)
       '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
-      '@vue/language-core': 1.8.27(typescript@5.4.2)
+      '@vue/language-core': 1.8.27(typescript@5.2.2)
       debug: 4.3.4
       kolorist: 1.8.0
       magic-string: 0.30.10
-      typescript: 5.4.2
-      vue-tsc: 1.8.27(typescript@5.4.2)
+      typescript: 5.2.2
+      vue-tsc: 1.8.27(typescript@5.2.2)
     optionalDependencies:
       vite: 5.1.4(@types/node@20.11.20)(less@4.2.0)
     transitivePeerDependencies:
@@ -13391,13 +13365,6 @@ snapshots:
       semver: 7.6.2
       typescript: 5.2.2
 
-  vue-tsc@1.8.27(typescript@5.4.2):
-    dependencies:
-      '@volar/typescript': 1.11.1
-      '@vue/language-core': 1.8.27(typescript@5.4.2)
-      semver: 7.6.2
-      typescript: 5.4.2
-
   vue@3.4.19(typescript@5.2.2):
     dependencies:
       '@vue/compiler-dom': 3.4.19
@@ -13407,16 +13374,6 @@ snapshots:
       '@vue/shared': 3.4.19
     optionalDependencies:
       typescript: 5.2.2
-
-  vue@3.4.19(typescript@5.4.2):
-    dependencies:
-      '@vue/compiler-dom': 3.4.19
-      '@vue/compiler-sfc': 3.4.19
-      '@vue/runtime-dom': 3.4.19
-      '@vue/server-renderer': 3.4.19(vue@3.4.19(typescript@5.4.2))
-      '@vue/shared': 3.4.19
-    optionalDependencies:
-      typescript: 5.4.2
 
   w3c-xmlserializer@5.0.0:
     dependencies:
