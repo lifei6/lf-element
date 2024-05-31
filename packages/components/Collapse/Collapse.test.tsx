@@ -1,10 +1,18 @@
-import { beforeAll, describe, expect, test, vi } from 'vitest'
-import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
-
+import { beforeAll, describe, expect, test, vi, it } from 'vitest'
+import { mount } from '@vue/test-utils'
+import type { DOMWrapper, VueWrapper } from '@vue/test-utils'
+import { ref } from 'vue'
 import Collapse from './Collapse.vue'
 import CollapseItem from './CollapseItem.vue'
 
 const onChange = vi.fn()
+
+// const actionsData = {
+//   onChange: (newValue: string[] | number[]) => {
+//     console.log(newValue)
+//   }
+// }
+// const onChange = vi.spyOn(actionsData, 'onChange')
 
 let wrapper: VueWrapper, headers: DOMWrapper<Element>[], contents: DOMWrapper<Element>[]
 
@@ -16,21 +24,24 @@ let firstHeader: DOMWrapper<Element>,
   disabledContent: DOMWrapper<Element>
 
 describe('Collapse.vue', () => {
+  const inputValue = ref(['a'])
   beforeAll(() => {
     wrapper = mount(
-      () => (
-        <Collapse modelValue={['a']} {...{ onChange }}>
-          <CollapseItem name="a" title="title a">
-            content a
-          </CollapseItem>
-          <CollapseItem name="b" title="title b">
-            content b
-          </CollapseItem>
-          <CollapseItem name="c" title="title c" disabled>
-            content c
-          </CollapseItem>
-        </Collapse>
-      ),
+      () => {
+        return (
+          <Collapse vModel={inputValue.value} {...{ onChange }}>
+            <CollapseItem name="a" title="title a">
+              content a
+            </CollapseItem>
+            <CollapseItem name="b" title="title b">
+              content b
+            </CollapseItem>
+            <CollapseItem name="c" title="title c" disabled>
+              content c
+            </CollapseItem>
+          </Collapse>
+        )
+      },
       {
         global: {
           stubs: ['LfIcon']
@@ -73,15 +84,13 @@ describe('Collapse.vue', () => {
     await firstHeader.trigger('click')
     expect(firstHeader.classes()).not.toContain('is-active')
     expect(firstContent.isVisible()).toBeFalsy()
+    expect(inputValue.value).toEqual([])
+    expect(onChange).toHaveBeenCalledWith([])
     await secondHeader.trigger('click')
     expect(secondHeader.classes()).toContain('is-active')
     expect(secondHeader.isVisible()).toBeTruthy()
-  })
-
-  test('发送正确的事件', () => {
-    expect(onChange).toHaveBeenCalledTimes(2)
-    expect(onChange).toHaveBeenCalledWith([])
-    expect(onChange).toHaveBeenLastCalledWith(['b'])
+    expect(inputValue.value).toEqual(['b'])
+    expect(onChange).toHaveBeenCalledWith(['b'])
   })
 
   test('disabled 内容', async () => {
@@ -94,5 +103,59 @@ describe('Collapse.vue', () => {
     expect(onChange).not.toHaveBeenCalled()
   })
 
-  test.todo('手风琴模式')
+  test('手风琴模式', async () => {
+    const activeNames = ref(['a'])
+    wrapper = mount(() => (
+      <Collapse vModel={activeNames.value} {...{ onChange }} accordion>
+        <CollapseItem name="a" title="title a">
+          content a
+        </CollapseItem>
+        <CollapseItem name="b" title="title b">
+          content b
+        </CollapseItem>
+        <CollapseItem name="c" title="title c" disabled>
+          content c
+        </CollapseItem>
+      </Collapse>
+    ))
+    headers = wrapper.findAll('.lf-collapse-item__header')
+    contents = wrapper.findAll('.lf-collapse-item__wapper')
+
+    firstHeader = headers[0]
+    secondHeader = headers[1]
+    disabledHeader = headers[2]
+
+    firstContent = contents[0]
+    secondContent = contents[1]
+    disabledContent = contents[2]
+
+    // onChange触发次数清零
+    onChange.mockClear()
+    await secondHeader.trigger('click')
+    expect(secondHeader.classes()).toContain('is-active')
+    expect(secondContent.isVisible()).toBeTruthy()
+    expect(activeNames.value).toEqual(['b'])
+    expect(onChange).toHaveBeenCalledWith(['b'])
+
+    // 点击自己两次数据为['']
+    await secondHeader.trigger('click')
+    expect(secondHeader.classes()).not.toContain('is-active')
+    expect(activeNames.value).toEqual([''])
+    expect(onChange).toHaveBeenCalledWith([''])
+  })
+
+  it('手风琴模式传入数组不能长度不能超过1', () => {
+    // 模拟原始的console.log函数
+    const consoleWarnSpy = vi.spyOn(console, 'warn')
+    const modelValue = [1, 2] // this array has a length greater than 1
+    mount(Collapse, {
+      props: { modelValue, accordion: true }
+    })
+
+    // 检查console.warn是否被调用
+    expect(consoleWarnSpy).toHaveBeenCalled()
+
+    // Clean up the spy
+    consoleWarnSpy.mockRestore()
+  })
 })

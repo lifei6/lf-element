@@ -1,6 +1,6 @@
 /** @type { import('@storybook/vue3').Preview } */
-// 引入打包后的样式
-import 'lf-element/dist/index.css'
+// 引入打包后的全局样式
+import 'lf-element/dist/theme/index.css'
 const preview = {
   parameters: {
     controls: {

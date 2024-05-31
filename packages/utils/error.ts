@@ -1,7 +1,7 @@
 import { isString } from 'lodash-es'
 
 // 对错误对象进行包装
-class LfUIError extends Error {
+export class LfUIError extends Error {
   constructor(message: string) {
     super(message)
     this.name = 'LfUIError'

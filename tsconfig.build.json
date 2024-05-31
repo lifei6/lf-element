@@ -25,15 +25,20 @@
 
     /* js */
     "allowJs": false,
-    "checkJs": false
+    "checkJs": false,
+
+    /* 打包时命名空间替换为真实路径 */
+    "baseUrl": "./",
+    "paths": {
+      "@lf-element/components": ["./packages/components/index.ts"]
+    }
   },
   "include": [
     "packages/core/index.ts",
     "packages/hooks/**/*.ts",
     "packages/utils/**/*.ts",
-    "packages/components/index.ts",
     "packages/components/**/*.ts",
-    "packages/components/**/*.vue"
+    "env.d.ts"
   ],
   "exclude": ["packages/components/vitest.config.ts"]
 }

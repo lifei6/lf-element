@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import Parent from './components/Parent.vue'
+import WrapperCpn from './components/Wrapper.jsx'
 import { LfButton } from 'lf-element'
 import { ref } from 'vue'
+// 按需引入样式
+// import 'lf-element/dist/theme/Button.css'
 const btn = ref<InstanceType<typeof LfButton>>()
 function toggleTheme() {
   btn.value?.ref?.style.setProperty('--lf-button-text-color', 'red')
@@ -93,6 +96,10 @@ function handleChange(newVal: string[] | number[]) {
         <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
       </lf-collapse-item>
     </lf-collapse>
+  </div>
+  <div class="item">
+    <h2>7.测试折叠器v-model</h2>
+    <WrapperCpn />
   </div>
 </template>
 

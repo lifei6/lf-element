@@ -1,7 +1,9 @@
 import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import { LfButton, LfButtonGroup, LfIcon } from 'lf-element'
-
+// 引入样式
+import 'lf-element/dist/theme/Button.css'
+import 'lf-element/dist/theme/Icon.css'
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Example/LfButton',
