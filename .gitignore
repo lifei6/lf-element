@@ -7,17 +7,22 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# 第三方包和打包后需要忽略的文件
 node_modules
-coverage
 dist
 dist-ssr
 *.local
 
-/cyperss/videos/
-/cypress/srceenshots/
-
+# vitepress忽略文件
 .vitepress/dist
 .vitepress/cache
+cache
+
+# vitest忽略文件
+coverage
+
+# storybook忽略文件
+*storybook.log
 
 # Editor directories and files
 .vscode/*
@@ -30,4 +35,7 @@ dist-ssr
 *.sln
 *.sw?
 
-*storybook.log
+/cyperss/videos/
+/cypress/srceenshots/
+
+

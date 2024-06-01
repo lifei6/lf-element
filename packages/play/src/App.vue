@@ -3,6 +3,8 @@ import Parent from './components/Parent.vue'
 import WrapperCpn from './components/Wrapper.jsx'
 import { LfButton } from 'lf-element'
 import { ref } from 'vue'
+import type { AlertInstance } from 'lf-element'
+
 // 按需引入样式
 // import 'lf-element/dist/theme/Button.css'
 const btn = ref<InstanceType<typeof LfButton>>()
@@ -21,6 +23,8 @@ const activeNames = ref<string[]>([])
 function handleChange(newVal: string[] | number[]) {
   console.log('handleChange:', newVal)
 }
+// 测试alert
+const _alert = ref<AlertInstance>()
 </script>
 
 <template>
@@ -100,6 +104,26 @@ function handleChange(newVal: string[] | number[]) {
   <div class="item">
     <h2>7.测试折叠器v-model</h2>
     <WrapperCpn />
+  </div>
+  <div class="item">
+    <h2>8.测试Alert</h2>
+    <lf-button type="primary" @click="_alert!.close()">关闭alert</lf-button>
+    <lf-button type="primary" @click="_alert!.open()">打开alert</lf-button>
+    <LfAlert
+      title="成功提示的文案"
+      type="success"
+      show-icon
+      center
+      ref="_alert"
+      @close="
+        () => {
+          console.log('关闭alert')
+        }
+      "
+    />
+    <LfAlert title="消息提示的文案" type="info" description="内容信息" show-icon />
+    <LfAlert title="警告提示的文案" type="warning" show-icon effect="dark" />
+    <LfAlert title="错误提示的文案" type="danger" show-icon :closable="false" />
   </div>
 </template>
 

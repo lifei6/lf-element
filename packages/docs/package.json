@@ -2,16 +2,22 @@
   "name": "@lf-element/docs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.md",
+  "type": "module",
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "dev": "vitepress dev ./",
+    "build": "vitepress build ./",
+    "preview": "vitepress preview ./"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@shikijs/transformers": "^1.6.1",
+    "@shikijs/vitepress-twoslash": "^1.6.1",
+    "@vitepress-demo-preview/component": "^2.3.2",
+    "@vitepress-demo-preview/plugin": "^1.2.2",
+    "shiki": "^1.6.1",
     "vitepress": "1.0.0-rc.44"
   }
 }

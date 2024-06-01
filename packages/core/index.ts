@@ -14,7 +14,6 @@ library.add(fas)
 
 // 获取插件安装函数
 const install = makeInstaller(components)
-
 // 分别导出组件
 export * from '@lf-element/components'
 // 导出安装函数
