@@ -8,6 +8,8 @@ import moveStyleFilePlugin from './custom-vite-plugins/move-style-file-plugin'
 import { readFileSync } from 'fs'
 import { delay } from 'lodash-es'
 import shell from 'shelljs'
+// 集成unocss
+import UnoCSS from 'unocss/vite'
 
 const TRY_MOVE_STYLES_DELAY = 800 as const
 
@@ -23,6 +25,10 @@ function moveStyles() {
 export default defineConfig({
   plugins: [
     vue(),
+    UnoCSS({
+      // UnoCSS使用的配置文件
+      configFile: '../../uno.config.ts'
+    }),
     compression({
       include: /.(cjs|css)$/i
     }),

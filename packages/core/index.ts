@@ -7,7 +7,8 @@ import '@lf-element/theme/index.less'
 import { library } from '@fortawesome/fontawesome-svg-core'
 // 导入字体图标中的所有图标
 import { fas } from '@fortawesome/free-solid-svg-icons'
-
+// 使用unocss
+import 'virtual:uno.css'
 // 将字体图标添加到图标库中
 // 向 library 添加一个元素 fas
 library.add(fas)

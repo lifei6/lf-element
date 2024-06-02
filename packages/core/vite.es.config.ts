@@ -7,6 +7,8 @@ import { readdirSync } from 'fs'
 import { filter, map, delay } from 'lodash-es'
 import moveStyleFilePlugin from './custom-vite-plugins/move-style-file-plugin'
 import shell from 'shelljs'
+// 集成unocss
+import UnoCSS from 'unocss/vite'
 
 // 组件文件名（用于分包）
 function getDirectoriesSync(basePath: string) {
@@ -31,6 +33,10 @@ function moveStyles() {
 export default defineConfig({
   plugins: [
     vue(),
+    UnoCSS({
+      // UnoCSS使用的配置文件
+      configFile: '../../uno.config.ts'
+    }),
     // 生成类型声明文件
     dts({
       tsconfigPath: '../../tsconfig.build.json',

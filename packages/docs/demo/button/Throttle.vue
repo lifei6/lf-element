@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // import { ErMessage } from 'eric-ui'
 function handleBtnClick() {
   // ErMessage.info('btn click')

@@ -24,6 +24,10 @@ outline: deep
 
 - Less
 
+- unocss
+
+  原子样式生成器，非常好用！
+
 ### 测试
 
 - Vitest
@@ -75,7 +79,15 @@ outline: deep
 ### 自动部署
 
 - Github Actions
+
+  1. Lint
+  2. Test
+  3. Build
+  4. Deploy
+
 - Github Pages
+
+  github提供的免费的静态站点托管平台
 
 ## 集成的插件
 

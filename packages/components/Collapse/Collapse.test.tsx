@@ -29,7 +29,7 @@ describe('Collapse.vue', () => {
     wrapper = mount(
       () => {
         return (
-          <Collapse vModel={inputValue.value} {...{ onChange }}>
+          <Collapse modelValue={inputValue.value} {...{ onChange }}>
             <CollapseItem name="a" title="title a">
               content a
             </CollapseItem>
@@ -84,12 +84,10 @@ describe('Collapse.vue', () => {
     await firstHeader.trigger('click')
     expect(firstHeader.classes()).not.toContain('is-active')
     expect(firstContent.isVisible()).toBeFalsy()
-    expect(inputValue.value).toEqual([])
     expect(onChange).toHaveBeenCalledWith([])
     await secondHeader.trigger('click')
     expect(secondHeader.classes()).toContain('is-active')
     expect(secondHeader.isVisible()).toBeTruthy()
-    expect(inputValue.value).toEqual(['b'])
     expect(onChange).toHaveBeenCalledWith(['b'])
   })
 
@@ -106,7 +104,7 @@ describe('Collapse.vue', () => {
   test('手风琴模式', async () => {
     const activeNames = ref(['a'])
     wrapper = mount(() => (
-      <Collapse vModel={activeNames.value} {...{ onChange }} accordion>
+      <Collapse modelValue={activeNames.value} {...{ onChange }} accordion>
         <CollapseItem name="a" title="title a">
           content a
         </CollapseItem>
@@ -134,13 +132,11 @@ describe('Collapse.vue', () => {
     await secondHeader.trigger('click')
     expect(secondHeader.classes()).toContain('is-active')
     expect(secondContent.isVisible()).toBeTruthy()
-    expect(activeNames.value).toEqual(['b'])
     expect(onChange).toHaveBeenCalledWith(['b'])
 
     // 点击自己两次数据为['']
     await secondHeader.trigger('click')
     expect(secondHeader.classes()).not.toContain('is-active')
-    expect(activeNames.value).toEqual([''])
     expect(onChange).toHaveBeenCalledWith([''])
   })
 

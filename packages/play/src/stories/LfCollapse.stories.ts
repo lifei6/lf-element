@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import { LfCollapse, LfCollapseItem, LfIcon } from 'lf-element'
 // 引入样式
@@ -13,7 +13,7 @@ const container = (cpn: string) => {
 
 const meta = {
   title: 'Example/LfCollapse',
-  component: LfCollapse,
+  component: LfCollapse as any,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
@@ -28,7 +28,7 @@ const meta = {
 } satisfies Meta<typeof LfCollapse>
 
 export default meta
-type Story = StoryObj<typeof meta> & { argTypes?: ArgTypes }
+type Story = StoryObj<typeof meta>
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
