@@ -7,6 +7,7 @@
     "dev": "pnpm --filter @lf-element/play dev",
     "test": "pnpm --filter @lf-element/components test",
     "build": "pnpm --filter lf-element build",
+    "type-check": "pnpm --filter lf-element type-check",
     "release": "pnpm --filter lf-element release",
     "docs:dev": "pnpm --filter @lf-element/docs dev",
     "docs:build": "pnpm --filter @lf-element/docs build",
